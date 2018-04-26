@@ -61,7 +61,7 @@ static int decode_packet(const AVPacket *pkt)
                 const AVMotionVector *mvs = (const AVMotionVector *)sd->data;
                 for (i = 0; i < sd->size / sizeof(*mvs); i++) {
                     const AVMotionVector *mv = &mvs[i];
-                    printf("| %d | %2d | %2d | %2d | %4d | %4d | %4d | %4d | %4d | %4d | %4d | %4d | %4d | 0x%"PRIx64" |\n",
+                    printf("| #:%d | p/f:%2d | %2d x %2d | src:(%4d,%4d) | dst:(%4d,%4d) | dx:%4d | dy:%4d | motion_x:%4d | motion_y:%4d | motion_scale:%4d | 0x%"PRIx64" |\n",
                         video_frame_count,
                         mv->source,
                         mv->w,
@@ -72,11 +72,11 @@ static int decode_packet(const AVPacket *pkt)
                         mv->dst_y,
                         mv->dst_x - mv->src_x,
                         mv->dst_y - mv->src_y,
-			mv->motion_x,
-			mv->motion_y,
-			mv->motion_scale,
+                  			mv->motion_x,
+                  			mv->motion_y,
+                  			mv->motion_scale,
                         mv->flags);
-		    printf("------------------------------------------------------------------------------------------\n");
+		    printf("---------------------------------------------------------------------------------------------------------------------------------------------\n");
                 }
             }
             av_frame_unref(frame);
