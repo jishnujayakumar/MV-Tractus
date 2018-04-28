@@ -24,4 +24,4 @@ A simple tool to extract motion vectors from mpeg videos.
 6. `./extract_mvs <video-file-path>`.
 7. And there you go. The output will be saved in './output/mv/'.
 
-`pip install mv-tractus` (Under construction).
+`pip install mv-tractus` (Coming Soon).
