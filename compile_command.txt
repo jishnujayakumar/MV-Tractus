@@ -1,8 +1,7 @@
 [1] For extract_mvs creation
 ------------------------
-gcc -Wno-format-zero-length -Wno-write-strings -o extract_mvs extract_mvs.c -lavcodec -lavformat -lavutil -lavdevice -lswresample -lswscale -L./ffmpeg/build/lib -I./ffmpeg/build/include
-
+gcc -o extract_mvs extract_mvs.c -lavcodec -lavformat -lavutil -lavdevice -lswresample -lswscale -L/opt/dev-tools-sources/ffmpeg/build/lib -I/opt/dev-tools-sources/ffmpeg/build/include -l json -w 
 
 [2] For shared extract_mvs.so file creation
 ---------------------------------------
-gcc -Wno-format-zero-length -Wno-write-strings -shared -o extract_mvs.so -fPIC extract_mvs.c -lavcodec -lavformat -lavutil -lavdevice -lswresample -lswscale -L./ffmpeg/build/lib -I./ffmpeg/build/include
+gcc -shared -o extract_mvs.so -c extract_mvs.c -lavcodec -lavformat -lavutil -lavdevice -lswresample -lswscale -L/opt/dev-tools-sources/ffmpeg/build/lib -I/opt/dev-tools-sources/ffmpeg/build/include -l json -w

@@ -19,10 +19,16 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */
+
+ *Modified by: Jishnu Jaykumar Padalunkal
+ *Modified on: 26 Apr 2018
+
+*/
 
 #include "include/libavutil/motion_vector.h"
 #include "include/libavformat/avformat.h"
+#include <stdio.h>
+#include <string.h>
 
 static AVFormatContext *fmt_ctx = NULL;
 static AVCodecContext *video_dec_ctx = NULL;
@@ -32,6 +38,39 @@ static const char *src_filename = NULL;
 static int video_stream_idx = -1;
 static AVFrame *frame = NULL;
 static int video_frame_count = 0;
+
+static int print_motion_vectors_data(AVMotionVector *mv, int video_frame_count){
+  printf("| #:%d | p/f:%2d | %2d x %2d | src:(%4d,%4d) | dst:(%4d,%4d) | dx:%4d | dy:%4d | motion_x:%4d | motion_y:%4d | motion_scale:%4d | 0x%"PRIx64" |\n",
+      video_frame_count,
+      mv->source,
+      mv->w,
+      mv->h,
+      mv->src_x,
+      mv->src_y,
+      mv->dst_x,
+      mv->dst_y,
+      mv->dst_x - mv->src_x,
+      mv->dst_y - mv->src_y,
+      mv->motion_x,
+      mv->motion_y,
+      mv->motion_scale,
+      mv->flags);
+  printf("---------------------------------------------------------------------------------------------------------------------------------------------\n");
+  return 0;
+}
+
+static int print_frame_data(AVFrame * frame){
+  printf("%s\n", frame->data[0]);
+  return 0;
+}
+
+static int dump_json_to_file(char *filepath, int video_frame_count){
+   FILE *fp;
+   fp = fopen(filepath, "a");
+   fprintf(fp, "This is testing for fprintf..\n");
+   fputs("Jishnu", fp);
+   fclose(fp);
+}
 
 static int decode_packet(const AVPacket *pkt)
 {
@@ -53,32 +92,17 @@ static int decode_packet(const AVPacket *pkt)
         if (ret >= 0) {
             int i;
             AVFrameSideData *sd;
-
             video_frame_count++;
             sd = av_frame_get_side_data(frame, AV_FRAME_DATA_MOTION_VECTORS);
-            printf("%d, %d\n", sd, AV_FRAME_DATA_MOTION_VECTORS);
             if (sd) {
                 const AVMotionVector *mvs = (const AVMotionVector *)sd->data;
                 for (i = 0; i < sd->size / sizeof(*mvs); i++) {
                     const AVMotionVector *mv = &mvs[i];
-                    printf("| #:%d | p/f:%2d | %2d x %2d | src:(%4d,%4d) | dst:(%4d,%4d) | dx:%4d | dy:%4d | motion_x:%4d | motion_y:%4d | motion_scale:%4d | 0x%"PRIx64" |\n",
-                        video_frame_count,
-                        mv->source,
-                        mv->w,
-                        mv->h,
-                        mv->src_x,
-                        mv->src_y,
-                        mv->dst_x,
-                        mv->dst_y,
-                        mv->dst_x - mv->src_x,
-                        mv->dst_y - mv->src_y,
-                  			mv->motion_x,
-                  			mv->motion_y,
-                  			mv->motion_scale,
-                        mv->flags);
-		    printf("---------------------------------------------------------------------------------------------------------------------------------------------\n");
+                    print_motion_vectors_data(mv, video_frame_count);
                 }
             }
+            //Print frame data
+            // print_frame_data(frame);
             av_frame_unref(frame);
         }
     }
@@ -169,7 +193,7 @@ int main(int argc, char **argv)
         goto end;
     }
 
-    printf("framenum,source,blockw,blockh,srcx,srcy,dstx,dsty,flags\n");
+    printf("framenum,source,blockw,blockh,srcx,srcy,dstx,dsty,motion_x,motion_y,motion_scale,flags\n");
 
     /* read frames from the file */
     while (av_read_frame(fmt_ctx, &pkt) >= 0) {
