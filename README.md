@@ -16,4 +16,4 @@ A simple tool for motion vector extraction from mpeg videos.
 
 ## Installation
 
-`pip install mv-tractus`
+`pip install mv-tractus` (Under construction).
