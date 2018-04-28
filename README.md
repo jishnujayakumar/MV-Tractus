@@ -13,3 +13,7 @@ A simple tool for motion vector extraction from mpeg videos.
 }
 
 ### [![DOI](https://sandbox.zenodo.org/badge/DOI/10.5072/zenodo.216985.svg)](https://doi.org/10.5072/zenodo.216985)
+
+## Installation
+
+`pip install mv-tractus`

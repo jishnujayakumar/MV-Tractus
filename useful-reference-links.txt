@@ -1,9 +1,0 @@
-[1] https://www.ffmpeg.org/doxygen/3.4/group__lavu__frame.html#ggae01fa7e427274293aacdf2adc17076bcaf50d0ed0a9a4517341c221be03a06c42
-
-[2] https://www.ffmpeg.org/doxygen/3.4/structAVMotionVector.html
-
-[3] https://www.ffmpeg.org/doxygen/3.4/group__lavu__frame.html
-
-[4] https://www.csestack.org/calling-c-functions-from-python/      Calling C functions from Python
-
-[5] https://linuxprograms.wordpress.com/2010/05/20/json-c-libjson-tutorial/  Use json C
