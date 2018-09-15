@@ -19,16 +19,10 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
+ */
 
- *Modified by: Jishnu Jaykumar Padalunkal
- *Modified on: 26 Apr 2018
-
-*/
-
-#include "include/libavutil/motion_vector.h"
-#include "include/libavformat/avformat.h"
-#include <stdio.h>
-#include <string.h>
+#include <libavutil/motion_vector.h>
+#include <libavformat/avformat.h>
 
 static AVFormatContext *fmt_ctx = NULL;
 static AVCodecContext *video_dec_ctx = NULL;
@@ -39,41 +33,9 @@ static int video_stream_idx = -1;
 static AVFrame *frame = NULL;
 static int video_frame_count = 0;
 
-static int print_motion_vectors_data(AVMotionVector *mv, int video_frame_count){
-  printf("| #:%d | p/f:%2d | %2d x %2d | src:(%4d,%4d) | dst:(%4d,%4d) | dx:%4d | dy:%4d | motion_x:%4d | motion_y:%4d | motion_scale:%4d | 0x%"PRIx64" |\n",
-      video_frame_count,
-      mv->source,
-      mv->w,
-      mv->h,
-      mv->src_x,
-      mv->src_y,
-      mv->dst_x,
-      mv->dst_y,
-      mv->dst_x - mv->src_x,
-      mv->dst_y - mv->src_y,
-      mv->motion_x,
-      mv->motion_y,
-      mv->motion_scale,
-      mv->flags);
-  printf("---------------------------------------------------------------------------------------------------------------------------------------------\n");
-  return 0;
-}
-
-static int print_frame_data(AVFrame * frame){
-  printf("%s\n", frame->data[0]);
-  return 0;
-}
-
-static int dump_json_to_file(char *filepath, int video_frame_count){
-   FILE *fp;
-   fp = fopen(filepath, "a");
-   fprintf(fp, "This is testing for fprintf..\n");
-   fputs("Jishnu", fp);
-   fclose(fp);
-}
-
 static int decode_packet(const AVPacket *pkt)
 {
+    printf("DCD\n");
     int ret = avcodec_send_packet(video_dec_ctx, pkt);
     if (ret < 0) {
         fprintf(stderr, "Error while sending a packet to the decoder: %s\n", av_err2str(ret));
@@ -92,17 +54,20 @@ static int decode_packet(const AVPacket *pkt)
         if (ret >= 0) {
             int i;
             AVFrameSideData *sd;
+            printf("%d\n", video_frame_count);
             video_frame_count++;
             sd = av_frame_get_side_data(frame, AV_FRAME_DATA_MOTION_VECTORS);
             if (sd) {
                 const AVMotionVector *mvs = (const AVMotionVector *)sd->data;
                 for (i = 0; i < sd->size / sizeof(*mvs); i++) {
                     const AVMotionVector *mv = &mvs[i];
-                    print_motion_vectors_data(mv, video_frame_count);
+
+                    // printf("%d,%2d,%2d,%2d,%4d,%4d,%4d,%4d,0x%"PRIx64"\n",
+                    //     video_frame_count, mv->source,
+                    //     mv->w, mv->h, mv->src_x, mv->src_y,
+                    //     mv->dst_x, mv->dst_y, mv->flags);
                 }
             }
-            //Print frame data
-            // print_frame_data(frame);
             av_frame_unref(frame);
         }
     }
@@ -155,61 +120,80 @@ static int open_codec_context(AVFormatContext *fmt_ctx, enum AVMediaType type)
     return 0;
 }
 
-int main(int argc, char **argv)
-{
-    int ret = 0;
-    AVPacket pkt = { 0 };
+void connect(int argc, char **argv){
 
-    if (argc != 2) {
-        fprintf(stderr, "Usage: %s <video>\n", argv[0]);
-        exit(1);
-    }
-    src_filename = argv[1];
+  if (argc != 2) {
+      fprintf(stderr, "Usage: %s <video>\n", argv[0]);
+      exit(1);
+  }
+  src_filename = argv[1];
 
-    if (avformat_open_input(&fmt_ctx, src_filename, NULL, NULL) < 0) {
-        fprintf(stderr, "Could not open source file %s\n", src_filename);
-        exit(1);
-    }
+  if (avformat_open_input(&fmt_ctx, src_filename, NULL, NULL) < 0) {
+      fprintf(stderr, "Could not open source file %s\n", src_filename);
+      exit(1);
+  }
 
-    if (avformat_find_stream_info(fmt_ctx, NULL) < 0) {
-        fprintf(stderr, "Could not find stream information\n");
-        exit(1);
-    }
+  if (avformat_find_stream_info(fmt_ctx, NULL) < 0) {
+      fprintf(stderr, "Could not find stream information\n");
+      exit(1);
+  }
 
-    open_codec_context(fmt_ctx, AVMEDIA_TYPE_VIDEO);
+  open_codec_context(fmt_ctx, AVMEDIA_TYPE_VIDEO);
 
-    av_dump_format(fmt_ctx, 0, src_filename, 0);
+  // av_dump_format(fmt_ctx, 0, src_filename, 0);
 
-    if (!video_stream) {
-        fprintf(stderr, "Could not find video stream in the input, aborting\n");
-        ret = 1;
-        goto end;
-    }
+}
 
-    frame = av_frame_alloc();
-    if (!frame) {
-        fprintf(stderr, "Could not allocate frame\n");
-        ret = AVERROR(ENOMEM);
-        goto end;
-    }
+void extract_mvs(){
+  int ret = 0;
+  AVPacket pkt = { 0 };
 
-    printf("framenum,source,blockw,blockh,srcx,srcy,dstx,dsty,motion_x,motion_y,motion_scale,flags\n");
+  if (!video_stream) {
+      fprintf(stderr, "Could not find video stream in the input, aborting\n");
+      ret = 1;
+      goto end;
+  }
 
-    /* read frames from the file */
-    while (av_read_frame(fmt_ctx, &pkt) >= 0) {
-        if (pkt.stream_index == video_stream_idx)
-            ret = decode_packet(&pkt);
-        av_packet_unref(&pkt);
-        if (ret < 0)
-            break;
-    }
+  frame = av_frame_alloc();
+  if (!frame) {
+      fprintf(stderr, "Could not allocate frame\n");
+      ret = AVERROR(ENOMEM);
+      goto end;
+  }
 
-    /* flush cached frames */
-    decode_packet(NULL);
+  printf("framenum,source,blockw,blockh,srcx,srcy,dstx,dsty,flags\n");
+
+  /* read frames from the file */
+  while (av_read_frame(fmt_ctx, &pkt) >= 0) {
+      if (pkt.stream_index == video_stream_idx)
+          ret = decode_packet(&pkt);
+      av_packet_unref(&pkt);
+      /* flush cached frames */
+      decode_packet(NULL);
+      printf("%d\n", ret);
+      if (ret < 0){
+          break;
+        }
+      else if(ret ==0){
+
+        break;
+      }
+  }
 
 end:
-    avcodec_free_context(&video_dec_ctx);
-    avformat_close_input(&fmt_ctx);
-    av_frame_free(&frame);
-    return ret < 0;
+  avcodec_free_context(&video_dec_ctx);
+  avformat_close_input(&fmt_ctx);
+  av_frame_free(&frame);
+}
+
+int main(int argc, char **argv)
+{
+
+    connect(argc, argv);
+    int i=0;
+    while(++i<9){
+    extract_mvs();
+    }
+    // return ret < 0;
+    return 0;
 }

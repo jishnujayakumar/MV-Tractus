@@ -7,3 +7,5 @@
 [4] https://www.csestack.org/calling-c-functions-from-python/      Calling C functions from Python
 
 [5] https://linuxprograms.wordpress.com/2010/05/20/json-c-libjson-tutorial/  Use json C
+
+boehme@inb.uni-luebeckREMOVETHIS.de -- dranger.com tutorial-1.c save frame to a file using ffmpeg library

@@ -4,4 +4,10 @@ gcc -o extract_mvs extract_mvs.c -lavcodec -lavformat -lavutil -lavdevice -lswre
 
 [2] For shared extract_mvs.so file creation
 ---------------------------------------
-gcc -shared -o extract_mvs.so -c extract_mvs.c -lavcodec -lavformat -lavutil -lavdevice -lswresample -lswscale -L/opt/dev-tools-sources/ffmpeg/build/lib -I/opt/dev-tools-sources/ffmpeg/build/include -l json -w
+gcc -shared -o extract_mvs.so -fPIC extract_mvs.c -lavcodec -lavformat -lavutil -lavdevice -lswresample -lswscale -L/opt/dev-tools-sources/ffmpeg/build/lib -I/opt/dev-tools-sources/ffmpeg/build/include -l json -w
+
+[2] For shared python efmvs.so file creation
+---------------------------------------
+g++ -o efmvs.so efmvs_2.cpp -lavcodec -lavformat -lavutil -lavdevice -lswresample -lswscale -l python2.7 -lboost_python -lboost_system -shared -fPIC -Wl,-export-dynamic  -L/opt/dev-tools-sources/ffmpeg/build/lib -I/opt/dev-tools-sources/ffmpeg/build/include -I /usr/include/python2.7/ -c  -w `pkg-config --cflags --libs opencv`
+
+
