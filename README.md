@@ -6,12 +6,12 @@ A simple tool to extract motion vectors from mpeg videos.
 Jishnu P. (2018, October 21). jishnujayakumar/MV-Tractus: This is the first stable release. (Version 1.0). Zenodo. http://doi.org/10.5281/zenodo.1467851
 
 > @misc{jishnu_p_2018_1467851,  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;author = {Jishnu P},  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title = {jishnujayakumar/MV-Tractus: This is the first stable release.},  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;author = { Jishnu P },  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title = { jishnujayakumar/MV-Tractus: This is the first stable release. },  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;month = oct,  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;year = 2018,  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doi = {10.5281/zenodo.1467851},  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url = {https://doi.org/10.5281/zenodo.1467851}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doi = { 10.5281/zenodo.1467851 },  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url = { https://doi.org/10.5281/zenodo.1467851 }
 }
 
 ### [![DOI](https://zenodo.org/badge/131159983.svg)](https://zenodo.org/badge/latestdoi/131159983)
