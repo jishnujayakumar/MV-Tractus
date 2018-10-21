@@ -1,5 +1,6 @@
 #go to opt folder, make directories, make directories if not exits
 sudo mkdir -p /opt/dev-tools-sources
+cd /opt/dev-tools-sources
 sudo mkdir ffmpeg
 sudo cd ffmpeg
 
