@@ -1,17 +1,17 @@
 #go to opt folder, make directories, make directories if not exits
 sudo mkdir -p /opt/dev-tools-sources
 cd /opt/dev-tools-sources
-sudo mkdir ffmpeg
-sudo cd ffmpeg
+sudo mkdir -p ffmpeg
+cd ffmpeg
 
 #make build and bin directories
-sudo mkdir build bin
+sudo mkdir -p build bin
 
 #clone ffmpeg repo as source 
 sudo git clone https://github.com/FFmpeg/FFmpeg.git source
 
 #go to the source dir
-sudo cd source
+cd source
 
 #install required packages
 sudo apt-get -y install autoconf automake build-essential libass-dev libfreetype6-dev \
@@ -36,12 +36,12 @@ sudo make -j${nproc}
 sudo make install -j${nproc}
 
 #Copying ffmpeg.config to a new config file for making it available to ldconfig
-sudo cp ffmpeg.conf /etc/ld.so.conf.d/ffmpeg.conf
+#sudo cp ffmpeg.conf /etc/ld.so.conf.d/ffmpeg.conf
 
 #now update the ldconfig by just calling it
 sudo ldconfig
 
 #Bingo installation complete
-echo "Bingo! FFMpeg Installation complete"
+echo "Bingo! FFmpeg Installation complete"
 echo "Now call ./extract_mvs <video-source>"
 

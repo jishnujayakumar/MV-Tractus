@@ -16,13 +16,13 @@ A simple tool to extract motion vectors from mpeg videos.
 
 ## Installation and bootstrapping
 
-1. Install FFmpeg using the link [here](http://embedonix.com/articles/linux/installing-ffmpeg-from-source-on-ubuntu-14-0-4/) OR `./install_ffmpeg.sh`
-2. `sudo cp ffmpeg.conf /etc/ld.so.conf.d/ffmpeg.conf && sudo ldconfig`
-2. `git clone https://github.com/jishnujayakumar/MV-Tractus.git` 
-3. `cd MV-Tractus`
-4. Use the compile_command.txt to generate the binary file.
-5. Create a directory (output) and a sub-directory (output/mv/) within the current directory. (i.e. './output/mv/') only for the first time.
-6. `./extract_mvs <video-file-path>`.
-7. And there you go. The output will be saved in './output/mv/'.
+1. `git clone https://github.com/jishnujayakumar/MV-Tractus.git` 
+2. `cd MV-Tractus`
+3. Install FFmpeg using the link [here](http://embedonix.com/articles/linux/installing-ffmpeg-from-source-on-ubuntu-14-0-4/) OR `./install_ffmpeg.sh`
+4. `sudo cp ffmpeg.conf /etc/ld.so.conf.d/ffmpeg.conf && sudo ldconfig`
+5. Use the compile_command.txt to generate the binary file.
+6. Create a directory (output) and a sub-directory (output/mv/) within the current directory. (i.e. './output/mv/') only for the first time.
+7. `./extract_mvs <video-file-path>`.
+8. And there you go. The output will be saved in './output/mv/'.
 
 `pip install mv-tractus` (Coming Soon).
