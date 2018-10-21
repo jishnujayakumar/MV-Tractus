@@ -16,7 +16,8 @@ A simple tool to extract motion vectors from mpeg videos.
 
 ## Installation and bootstrapping
 
-1. Install FFmpeg using the link [here](http://embedonix.com/articles/linux/installing-ffmpeg-from-source-on-ubuntu-14-0-4/).
+1. Install FFmpeg using the link [here](http://embedonix.com/articles/linux/installing-ffmpeg-from-source-on-ubuntu-14-0-4/) OR `./install_ffmpeg.sh`
+2. `sudo cp ffmpeg.conf /etc/ld.so.conf.d/ffmpeg.conf && sudo ldconfig`
 2. `git clone https://github.com/jishnujayakumar/MV-Tractus.git` 
 3. `cd MV-Tractus`
 4. Use the compile_command.txt to generate the binary file.
