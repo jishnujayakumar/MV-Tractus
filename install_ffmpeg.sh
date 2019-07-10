@@ -16,8 +16,6 @@ cd source
 #install required packages
 sudo apt-get -y install autoconf automake build-essential libass-dev libfreetype6-dev \
 	libsdl1.2-dev libtheora-dev libtool libva-dev libvdpau-dev libvorbis-dev libxcb1-dev libxcb-shm0-dev \
-	libxcb-xfixes0-dev pkg-config texinfo zlib1g-devsudo apt-get -y install autoconf automake build-essential libass-dev libfreetype6-dev \
-	libsdl1.2-dev libtheora-dev libtool libva-dev libvdpau-dev libvorbis-dev libxcb1-dev libxcb-shm0-dev \
 	libxcb-xfixes0-dev pkg-config texinfo zlib1g-dev
 
 #install yasm compiler
@@ -27,12 +25,12 @@ sudo apt install yasm
 sudo apt install libx264-dev
 
 #configure
-./configure –prefix=”/opt/dev-tools-sources/ffmpeg/build” –bindir=”/opt/dev-tools-sources/ffmpeg/bin” –enable-gpl –enable-libx264 –enable-static –enable-shared
+sudo ./configure --prefix="/opt/dev-tools-sources/ffmpeg/build" --bindir="/opt/dev-tools-sources/ffmpeg/bin" --enable-gpl --enable-libx264 --enable-static --enable-shared
 
-#make
+#make (depending on your computer, it might be better to use less than all available processing units)
 sudo make -j${nproc}
 
-#install
+#install (depending on your computer, it might be better to use less than all available processing units)
 sudo make install -j${nproc}
 
 #Copying ffmpeg.config to a new config file for making it available to ldconfig
