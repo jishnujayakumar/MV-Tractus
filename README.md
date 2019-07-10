@@ -34,7 +34,7 @@ Jishnu P. (2018, October 21). MV-Tractus:  A simple and fast tool to extract mot
 [![Watch the video](https://i.ytimg.com/vi/qpwTdxsBebk/hqdefault.jpg)](https://www.youtube.com/embed/qpwTdxsBebk)
 
 #### Usage (extract_mvs_with_frames)
-Coming Soon
+[![Watch the video](https://i9.ytimg.com/vi/-e02hCdQ0_w/mq1.jpg?sqp=COi3mOkF&rs=AOn4CLDsQiHs5qBYcQm2bM4PKpPewUSPiA)](https://www.youtube.com/embed/e02hCdQ0_w)
 
 #### Python Usage (extract_mvs_with_frames)
 Coming Soon
