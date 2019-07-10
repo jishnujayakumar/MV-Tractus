@@ -27,11 +27,11 @@ sudo apt install libx264-dev
 #configure
 sudo ./configure --prefix="/opt/dev-tools-sources/ffmpeg/build" --bindir="/opt/dev-tools-sources/ffmpeg/bin" --enable-gpl --enable-libx264 --enable-static --enable-shared
 
-#make
-sudo make -j3
+#make (depending on your computer, it might be better to use less than all available processing units)
+sudo make -j${nproc}
 
-#install
-sudo make install -j3
+#install (depending on your computer, it might be better to use less than all available processing units)
+sudo make install -j${nproc}
 
 #Copying ffmpeg.config to a new config file for making it available to ldconfig
 #sudo cp ffmpeg.conf /etc/ld.so.conf.d/ffmpeg.conf
