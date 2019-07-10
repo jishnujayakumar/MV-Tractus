@@ -64,7 +64,7 @@ void SaveFrame(AVFrame *pFrame, int width, int height, int iFrame) {
   int  y;
 
   // Open file
-  sprintf(szFilename, "./v2/output/frames/frame%d.ppm", iFrame);
+  sprintf(szFilename, "./output/frames/frame%d.ppm", iFrame);
   pFile=fopen(szFilename, "wb");
   if(pFile==NULL)
     return;

@@ -1,1 +1,2 @@
 gcc -o extract_mvs extract_mvs.c -lavcodec -lavformat -lavutil -lavdevice -lswresample -lswscale -L/opt/dev-tools-sources/ffmpeg/build/lib -I/opt/dev-tools-sources/ffmpeg/build/include -w 
+gcc -o extract_mvs_with_frames extract_mvs_with_frames.c -lavcodec -lavformat -lavutil -lavdevice -lswresample -lswscale -L/opt/dev-tools-sources/ffmpeg/build/lib -I/opt/dev-tools-sources/ffmpeg/build/include -w 
