@@ -187,10 +187,6 @@ static int decode_packet(const AVPacket *pkt)
                       fprintf(file, "\t\t\"source\" : %d,\n", mv->source);
                       fprintf(file, "\t\t\"width\" : %d,\n", mv->w);
                       fprintf(file, "\t\t\"height\" : %d,\n", mv->h);
-                      fprintf(file, "\t\t\"src_x\" : %d,\n", (mv->src_x/abs(mv->source)));
-                      fprintf(file, "\t\t\"src_y\" : %d,\n", (mv->src_y/abs(mv->source)));
-                      fprintf(file, "\t\t\"dst_x\" : %d,\n", (mv->dst_x/abs(mv->source)));
-                      fprintf(file, "\t\t\"dst_y\" : %d,\n", (mv->dst_y/abs(mv->source)));
                       if(mv->source<0){
                         fprintf(file, "\t\t\"src_x\" : %d,\n", (mv->src_x/abs(mv->source)));
                         fprintf(file, "\t\t\"src_y\" : %d,\n", (mv->src_y/abs(mv->source)));
