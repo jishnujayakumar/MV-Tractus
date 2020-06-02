@@ -1,5 +1,5 @@
 # MV-Tractus
-A simple tool to extract motion vectors from mpeg videos.
+A simple tool to extract motion vectors from h264 encoded videos.
 
 ## If you use this tool, please cite.
 
