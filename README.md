@@ -39,4 +39,4 @@ Jishnu P. (2018, October 21). MV-Tractus:  A simple and fast tool to extract mot
 #### Python Usage (extract_mvs_with_frames)
 Coming Soon
 
-#### NOTE: Due to the lack of time, I am not able to maintain this project. I would like to request the users and contributors to help each other in all possible ways.
+#### NOTE: Due to the lack of time, I am not able to maintain this project. I would like to request the users and contributors to help each other in all possible ways by joining [slack](https://join.slack.com/t/mv-tractus/shared_invite/zt-jnyh53qo-o6xMN_AdZ1DyeusCERVMOA)
