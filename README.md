@@ -5,7 +5,7 @@ A simple tool to extract motion vectors from h264 encoded videos.
 
 Jishnu P. (2018, October 21). MV-Tractus:  A simple and fast tool to extract motion vectors from H264 encoded video streams. (Version 1.0). Zenodo. http://doi.org/10.5281/zenodo.1467851
 
-```
+```bibtex
 @article{jishnu_mvtractus,
   title={MV-Tractus:  A simple and fast tool to extract motion vectors from H264 encoded video streams.},
   author={Jishnu P, Praneet Singh},
