@@ -1,13 +1,18 @@
 # MV-Tractus
-A simple tool to extract motion vectors from h264 encoded videos.
+A simple tool to extract motion vectors from H264 encoded video sources.
+
+**NOTE**: This was a side project and never intended to be open sourced which is basically the reason behind the inappropriate coding style. This was just an experiment to build a tool to extract motion-vectors by building a wrapper around FFmpeg. This tool only supports motion-vector extraction. If you are intending to use it in any other context then I am afraid this is not the right tool that you are looking for. FFmpeg core libraries have not been altered. 
+
+**Disclaimer**: The authors don't claim anything regarding the performance of the tool.
 
 ## If you use this tool, please cite.
 
-Jishnu P. (2018, October 21). MV-Tractus:  A simple and fast tool to extract motion vectors from H264 encoded video streams. (Version 1.0). Zenodo. http://doi.org/10.5281/zenodo.1467851
+Jishnu P. (2018, October 21). MV-Tractus:  A simple tool to extract motion vectors from H264 encoded video sources. 
+http://doi.org/10.5281/zenodo.1467851
 
 ```bibtex
 @article{jishnu_mvtractus,
-  title={MV-Tractus:  A simple and fast tool to extract motion vectors from H264 encoded video streams.},
+  title={MV-Tractus:  A simple tool to extract motion vectors from H264 encoded video sources.},
   author={Jishnu P, Praneet Singh},
   journal={GitHub. Note: https://github.com/jishnujayakumar/MV-Tractus},
   volume={1},
@@ -39,6 +44,6 @@ Jishnu P. (2018, October 21). MV-Tractus:  A simple and fast tool to extract mot
 [![Watch the video](https://i.ytimg.com/vi/-e02hCdQ0_w/mq1.jpg)](https://www.youtube.com/embed/-e02hCdQ0_w)
 
 #### Python Usage (extract_mvs_with_frames)
-Coming Soon
+Coming Soon...
 
-#### NOTE: Due to the lack of time, I am not able to maintain this project. I would like to request the users and contributors to help each other in all possible ways by joining [slack](https://join.slack.com/t/mv-tractus/shared_invite/zt-jnyh53qo-o6xMN_AdZ1DyeusCERVMOA)
+#### NOTE: Due to the lack of time, I am not able to maintain this project. I would like to request the users and contributors to help each other in all possible ways by joining [Slack](https://join.slack.com/t/mv-tractus/shared_invite/zt-jnyh53qo-o6xMN_AdZ1DyeusCERVMOA).
