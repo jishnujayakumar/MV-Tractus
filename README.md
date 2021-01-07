@@ -1,7 +1,7 @@
 # MV-Tractus
 A simple tool to extract motion vectors from H264 encoded video sources.
 
-**NOTE**: This was a side project and never intended to be open sourced which is basically the reason behind the inappropriate coding style. This was just an experiment to build a tool to extract motion-vectors by building a wrapper around FFmpeg. This tool only supports motion-vector extraction. If you are intending to use it in any other context then I am afraid this is not the right tool that you are looking for. FFmpeg core libraries have not been altered. 
+**NOTE**: This was a side project and never intended to be open sourced which is basically the reason behind the inappropriate coding style. However, at the time of starting this project there weren't any easy to use open source implementations for motion-vector extraction. MV-tractus was the outcome an experiment to build a tool to extract motion-vectors by building a wrapper around FFmpeg. This tool only supports motion-vector extraction. If you are intending to use it in any other context then I am afraid this is not the right tool that you are looking for. FFmpeg core libraries have not been altered. 
 
 **Disclaimer**: The authors don't claim anything regarding the performance of the tool.
 
