@@ -49,4 +49,4 @@ Jishnu P, & Singh, Praneet. (2018, October 21). MV-Tractus: A simple tool to ext
 #### Python Usage (extract_mvs_with_frames)
 Coming Soon...
 
-#### NOTE: Due to the lack of time, I am not able to maintain this project. I would like to request the users and contributors to help each other in all possible ways by joining [Slack](https://join.slack.com/t/mv-tractus/shared_invite/zt-jnyh53qo-o6xMN_AdZ1DyeusCERVMOA).
+#### NOTE: Due to the lack of time, I am not able to maintain this project. I would like to request the users and contributors to help each other in all possible ways by joining [Slack](https://join.slack.com/t/mv-tractus/shared_invite/zt-lmjczfaf-TX_JYYkKIlBeySkwPcX3xg).
