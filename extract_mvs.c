@@ -40,6 +40,7 @@ static const char *src_filename = NULL;
 static int video_stream_idx = -1;
 static AVFrame *frame = NULL;
 static int video_frame_count = 0;
+static char **output_name = "./output/mv";
 
 static int print_motion_vectors_data(AVMotionVector *mv, int video_frame_count){
   printf("| #:%d | p/f:%2d | %2d x %2d | src:(%4d,%4d) | dst:(%4d,%4d) | dx:%4d | dy:%4d | motion_x:%4d | motion_y:%4d | motion_scale:%4d | 0x%"PRIx64" |\n",
@@ -89,7 +90,7 @@ static int decode_packet(const AVPacket *pkt)
             int i;
             AVFrameSideData *sd;
 	    video_frame_count++;
-            sprintf(szFileName, "./output/mv/%d.json", video_frame_count);
+            sprintf(szFileName, "%s/%d.json", output_name, video_frame_count);
             file = fopen(szFileName,"w");
             if (file == NULL)
             {
@@ -285,5 +286,8 @@ end:
 
 int main(int argc, char **argv)
 {
+	if(argc>2) {
+		output_name = argv[2];
+	}
 	extract_motion_vectors(argv[1]);
 }
