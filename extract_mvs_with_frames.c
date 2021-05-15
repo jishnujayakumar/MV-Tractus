@@ -51,6 +51,7 @@ int               frameFinished;
 int               numBytes;
 uint8_t           *buffer = NULL;
 struct SwsContext *sws_ctx = NULL;
+static char **output_name = "./output/mv";
 
 // compatibility with newer API
 #if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(55,28,1)
@@ -147,7 +148,7 @@ static int decode_packet(const AVPacket *pkt)
 
             // Save the frame to disk
             SaveFrame(pFrameRGB, pCodecCtx->width, pCodecCtx->height,video_frame_count);
-            sprintf(szFileName, "./output/mv/%d.json", video_frame_count);
+            sprintf(szFileName, "%s/%d.json", output_name, video_frame_count);
             file = fopen(szFileName,"w");
             if (file == NULL)
             {
@@ -379,5 +380,8 @@ end:
 
 int main(int argc, char **argv)
 {
+	if(argc>2) {
+		output_name = argv[2];
+	}
 	extract_motion_vectors(argv[1]);
 }

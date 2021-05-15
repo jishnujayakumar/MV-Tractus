@@ -34,8 +34,8 @@ Jishnu P, & Singh, Praneet. (2018, October 21). MV-Tractus: A simple tool to ext
 4. `sudo cp ffmpeg.conf /etc/ld.so.conf.d/ffmpeg.conf && sudo ldconfig`
 5. `./compile` OR You can use the compile_command.txt to generate the binary file.
 6. mkdir -p output/mv/
-7. `./extract_mvs <video-file-path>`.
-8. And there you go. The output will be saved in './output/mv/'.
+7. `./extract_mvs <video-file-path> <output-path>`.
+8. And there you go. The output will be saved in `<output-path>`. If this parameter is not specified, then the output is saved in './output/mv/'.
 
 `pip install mv-tractus` (Coming Soon).
 
