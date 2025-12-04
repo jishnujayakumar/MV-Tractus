@@ -1,8 +1,16 @@
 # MV-Tractus 🚀
-Extract motion vectors from H264/MPEG streams. CLI tools wrap FFmpeg; the Python package (`mv-tractus`) gives you the same power with optional frame extraction and overlays.
+Extract motion vectors from H264/MPEG streams. CLI tools wrap FFmpeg; the Python package (`mv-tractus`) offers the same with optional frame extraction and overlays.
 
 **Authors:** Jishnu Jaykumar Padalunkal, Praneet Singh  
 **Note:** FFmpeg is unmodified; performance is best effort.
+
+## Index
+- [Quick Start (CLI)](#quick-start-cli-)
+- [Python Usage](#python-usage-)
+- [Repository Layout](#repository-layout-)
+- [Community](#community-)
+- [Citation](#citation-)
+- [Tutorials](#tutorials-)
 
 ## Quick Start (CLI) ⚡
 1. `git clone https://github.com/jishnujayakumar/MV-Tractus.git && cd MV-Tractus`
@@ -86,5 +94,7 @@ Jishnu P, & Singh, Praneet. (2018, October 21). MV-Tractus: A simple tool to ext
 ```
 
 ## Tutorials 🎥
-- Installation, setup, and usage (extract_mvs): [YouTube](https://www.youtube.com/embed/qpwTdxsBebk)
-- Usage (extract_mvs_with_frames): [YouTube](https://www.youtube.com/embed/-e02hCdQ0_w)
+- Installation, setup, and usage (extract_mvs):  
+  [![extract_mvs](https://i.ytimg.com/vi/qpwTdxsBebk/hqdefault.jpg)](https://www.youtube.com/watch?v=qpwTdxsBebk)
+- Usage (extract_mvs_with_frames):  
+  [![extract_mvs_with_frames](https://i.ytimg.com/vi/-e02hCdQ0_w/hqdefault.jpg)](https://www.youtube.com/watch?v=-e02hCdQ0_w)
