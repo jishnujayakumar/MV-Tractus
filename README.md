@@ -95,7 +95,10 @@ Jishnu P, & Singh, Praneet. (2018, October 21). MV-Tractus: A simple tool to ext
 ```
 
 ## Tutorials 🎥
-- Installation, setup, and usage (extract_mvs):  
+Installation, setup, and usage (extract_mvs):  
+
   [![extract_mvs](https://i.ytimg.com/vi/qpwTdxsBebk/hqdefault.jpg)](https://www.youtube.com/watch?v=qpwTdxsBebk)
-- Usage (extract_mvs_with_frames):  
+
+Usage (extract_mvs_with_frames):  
+
   [![extract_mvs_with_frames](https://i.ytimg.com/vi/-e02hCdQ0_w/hqdefault.jpg)](https://www.youtube.com/watch?v=-e02hCdQ0_w)
