@@ -1,0 +1,15 @@
+# Core metadata
+include README.md
+include LICENSE.txt
+include setup.py
+include setup.cfg
+include pyproject.toml
+
+# Package sources and bundled shared libs
+recursive-include mv_tractus *.py
+recursive-include mv_tractus *.so
+
+# Keep build/output clutter out of sdists
+prune dist
+prune build
+prune output

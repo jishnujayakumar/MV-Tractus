@@ -1,0 +1,84 @@
+Metadata-Version: 2.4
+Name: mv-tractus
+Version: 1.0.8
+Summary: Extract motion vectors from H264/MPEG video streams
+Home-page: https://github.com/jishnujayakumar/MV-Tractus
+Author: Jishnu Jaykumar P
+Author-email: jishnu.jayakumar182@gmail.com
+Project-URL: Source, https://github.com/jishnujayakumar/MV-Tractus
+Project-URL: Issues, https://github.com/jishnujayakumar/MV-Tractus/issues
+Keywords: motion-vectors,video compression,opticalflow,computer vision
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Topic :: Multimedia :: Video
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: Pillow>=8
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: keywords
+Dynamic: license-file
+Dynamic: project-url
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+# MV-Tractus
+A simple tool for motion vector extraction from mpeg videos.
+
+## Python usage
+
+```bash
+pip install mv-tractus
+```
+
+```python
+from mv_tractus import MVTractus
+
+mvt = MVTractus("/path/to/video.mp4")  # outputs to ./output/mv by default
+mvt.get_motion_vectors()
+```
+
+If you also want extracted RGB frames alongside motion vectors, use:
+
+```python
+from mv_tractus import MVTractusWithFrames
+
+mvt = MVTractusWithFrames("/path/to/video.mp4")
+mvt.get_motion_vectors_and_frames()  # writes JSON to ./output/mv and PPM frames to ./output/frames
+```
+
+To overlay vectors on the saved frames:
+
+```python
+from mv_tractus import overlay_motion_vectors
+
+overlay_motion_vectors(
+    frames_dir="output/frames",
+    mv_dir="output/mv",
+    out_dir="output/overlay",
+    scale=1.0,
+    thickness=2,
+    stride=2,               # draw every 2nd vector for speed
+    max_vectors_per_frame=500,  # optional cap for speed
+)
+```
+
+## If you use this tool, please cite.
+
+> @misc{j_padalunkal_2018_216985,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;author = {J. Padalunkal},  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title = {MV-Tractus},  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;month = apr,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;year = 2018,  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doi = {10.5072/zenodo.216985},  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url = {https://doi.org/10.5072/zenodo.216985}
+}
+
+### [![DOI](https://sandbox.zenodo.org/badge/DOI/10.5072/zenodo.216985.svg)](https://doi.org/10.5072/zenodo.216985)

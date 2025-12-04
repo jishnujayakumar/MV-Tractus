@@ -1,0 +1,16 @@
+LICENSE.txt
+MANIFEST.in
+README.md
+pyproject.toml
+setup.cfg
+setup.py
+mv_tractus/__init__.py
+mv_tractus/extract_mvs.so
+mv_tractus/extract_mvs_with_frames.so
+mv_tractus/overlay.py
+mv_tractus/wrapper.py
+mv_tractus.egg-info/PKG-INFO
+mv_tractus.egg-info/SOURCES.txt
+mv_tractus.egg-info/dependency_links.txt
+mv_tractus.egg-info/requires.txt
+mv_tractus.egg-info/top_level.txt

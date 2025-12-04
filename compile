@@ -1,2 +1,5 @@
-gcc -o extract_mvs extract_mvs.c -lavcodec -lavformat -lavutil -lavdevice -lswresample -lswscale -L/opt/dev-tools-sources/ffmpeg/build/lib -I/opt/dev-tools-sources/ffmpeg/build/include -w 
-gcc -o extract_mvs_with_frames extract_mvs_with_frames.c -lavcodec -lavformat -lavutil -lavdevice -lswresample -lswscale -L/opt/dev-tools-sources/ffmpeg/build/lib -I/opt/dev-tools-sources/ffmpeg/build/include -w 
+mkdir -p bin
+INCLUDES="-Iinclude -I/opt/dev-tools-sources/ffmpeg/build/include"
+
+gcc -o bin/extract_mvs src/c/extract_mvs.c -lavcodec -lavformat -lavutil -lswresample -lswscale -L/opt/dev-tools-sources/ffmpeg/build/lib $INCLUDES -w 
+gcc -o bin/extract_mvs_with_frames src/c/extract_mvs_with_frames.c -lavcodec -lavformat -lavutil -lswresample -lswscale -L/opt/dev-tools-sources/ffmpeg/build/lib $INCLUDES -w 
