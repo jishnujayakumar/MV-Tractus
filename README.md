@@ -34,19 +34,19 @@ conda create -n mv-tractus python=3.9
 python -m pip install -e ./mvtpy --upgrade
 ```
 
-- Motion vectors:
+Motion vectors:
   ```python
   from mv_tractus import MVTractus
   mvt = MVTractus("/path/to/video.mp4")
   mvt.get_motion_vectors()  # JSON -> ./output/mv
   ```
-- Motion vectors + frames:
+Motion vectors + frames:
   ```python
   from mv_tractus import MVTractusWithFrames
   mvt = MVTractusWithFrames("/path/to/video.mp4")
   mvt.get_motion_vectors_and_frames()  # JSON -> ./output/mv, frames -> ./output/frames
   ```
-- Overlay vectors on saved frames (Pillow):
+Overlay vectors on saved frames (Pillow):
   ```python
   from mv_tractus import overlay_motion_vectors
 
