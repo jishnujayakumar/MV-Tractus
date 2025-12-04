@@ -5,6 +5,13 @@ A simple tool to extract motion vectors from H264 encoded video sources.
 
 **Disclaimer**: The authors don't claim anything regarding the performance of the tool.
 
+## Repository layout
+- `src/c`: FFmpeg-based C sources (`extract_mvs.c`, `extract_mvs_with_frames.c`, helpers)
+- `src/cpp`: C++ OpenCV/FFmpeg experiments (`efmvs.cpp`, etc.)
+- `scripts`: Utility scripts (Python wrappers, overlays, first-run helpers)
+- `pypi`: Python package source for `mv-tractus`
+- `include`: Vendored FFmpeg headers; `output`: default location for extracted data
+
 ## If you use this tool, please cite.
 
 Jishnu P, & Singh, Praneet. (2018, October 21). MV-Tractus: A simple tool to extract motion vectors from H264 encoded video sources (Version 2.0). Zenodo.
@@ -32,10 +39,10 @@ Jishnu P, & Singh, Praneet. (2018, October 21). MV-Tractus: A simple tool to ext
 2. `cd MV-Tractus`
 3. `./install_ffmpeg.sh` (You can also install FFmpeg using the link [here](http://embedonix.com/articles/linux/installing-ffmpeg-from-source-on-ubuntu-14-0-4/))
 4. `sudo cp ffmpeg.conf /etc/ld.so.conf.d/ffmpeg.conf && sudo ldconfig`
-5. `./compile` OR You can use the compile_command.txt to generate the binary file.
-6. mkdir -p output/mv/
-7. `./extract_mvs <video-file-path> <output-path>`.
-8. And there you go. The output will be saved in `<output-path>`. If this parameter is not specified, then the output is saved in './output/mv/'.
+5. `./compile` (artifacts land in `bin/`) OR use `compile_command.txt` as a reference.
+6. `mkdir -p output/mv/ output/frames/`
+7. `./bin/extract_mvs <video-file-path> <output-path>` or `./bin/extract_mvs_with_frames <video-file-path> <output-path>`
+8. If `<output-path>` is omitted, motion-vector JSON goes to `./output/mv/` and frames (frames build) go to `./output/frames/`.
 
 `pip install mv-tractus` (Coming Soon).
 

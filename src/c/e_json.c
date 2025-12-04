@@ -25,9 +25,9 @@
 
 */
 
-#include "include/libavutil/motion_vector.h"
-#include "include/libavformat/avformat.h"
-#include "include/libswscale/swscale.h"
+#include <libavutil/motion_vector.h>
+#include <libavformat/avformat.h>
+#include <libswscale/swscale.h>
 
 // #include <libswscale/swscale.h>
 #include <stdio.h>
@@ -353,7 +353,8 @@ void extract_motion_vectors(char *videopath){
     // printf("\n");
     // printf("**************************************************************************************\n");
     // printf("*       Tool : MV-Tractus                                                            *\n");
-    // printf("*     Author : Jishnu Jaykumar Padalunkal (https://jishnujayakumar.github.io)        *\n");
+  // printf("*  Authors : Jishnu Jaykumar Padalunkal (https://jishnujayakumar.github.io)          *\n");
+  // printf("*            Praneet Singh (https://praneet195.github.io/)                           *\n");
     // printf("*  Used Libs : FFmpeg                                                                *\n");
     // printf("*Description : A simple tool to extract motion vectors from MPEG videos              *\n");
     // printf("**************************************************************************************\n");

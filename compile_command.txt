@@ -1,13 +1,11 @@
 [1] For extract_mvs creation
 ------------------------
-gcc -o extract_mvs extract_mvs.c -lavcodec -lavformat -lavutil -lavdevice -lswresample -lswscale -L/opt/dev-tools-sources/ffmpeg/build/lib -I/opt/dev-tools-sources/ffmpeg/build/include -l json -w 
+gcc -o bin/extract_mvs src/c/extract_mvs.c -lavcodec -lavformat -lavutil -lswresample -lswscale -L/opt/dev-tools-sources/ffmpeg/build/lib -Iinclude -I/opt/dev-tools-sources/ffmpeg/build/include -l json -w 
 
 [2] For shared extract_mvs.so file creation
 ---------------------------------------
-gcc -shared -o extract_mvs.so -fPIC extract_mvs.c -lavcodec -lavformat -lavutil -lavdevice -lswresample -lswscale -L/opt/dev-tools-sources/ffmpeg/build/lib -I/opt/dev-tools-sources/ffmpeg/build/include -l json -w
+gcc -shared -o bin/extract_mvs.so -fPIC src/c/extract_mvs.c -lavcodec -lavformat -lavutil -lswresample -lswscale -L/opt/dev-tools-sources/ffmpeg/build/lib -Iinclude -I/opt/dev-tools-sources/ffmpeg/build/include -l json -w
 
 [2] For shared python efmvs.so file creation
 ---------------------------------------
-g++ -o efmvs.so efmvs_2.cpp -lavcodec -lavformat -lavutil -lavdevice -lswresample -lswscale -l python2.7 -lboost_python -lboost_system -shared -fPIC -Wl,-export-dynamic  -L/opt/dev-tools-sources/ffmpeg/build/lib -I/opt/dev-tools-sources/ffmpeg/build/include -I /usr/include/python2.7/ -c  -w `pkg-config --cflags --libs opencv`
-
-
+g++ -o bin/efmvs.so src/cpp/efmvs_2.cpp -lavcodec -lavformat -lavutil -lswresample -lswscale -l python2.7 -lboost_python -lboost_system -shared -fPIC -Wl,-export-dynamic  -L/opt/dev-tools-sources/ffmpeg/build/lib -Iinclude -I/opt/dev-tools-sources/ffmpeg/build/include -I /usr/include/python2.7/ -c  -w `pkg-config --cflags --libs opencv`

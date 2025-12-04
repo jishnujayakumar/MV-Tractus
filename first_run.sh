@@ -5,4 +5,4 @@ mkdir output
 cd output
 mkdir frames mv
 cd ../..
-python extract_mvs_with_frames.py $1 
+python scripts/extract_mvs_with_frames.py "$1"
