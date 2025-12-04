@@ -1,10 +1,18 @@
-# MV-Tractus
-Extract motion vectors from H264/MPEG streams. Ships CLI tools (FFmpeg-backed) and a Python package (`mv-tractus`) with optional frame extraction and overlays.
+# MV-Tractus 🚀
+Extract motion vectors from H264/MPEG streams. CLI tools wrap FFmpeg; the Python package (`mv-tractus`) offers the same with optional frame extraction and overlays.
 
 **Authors:** Jishnu Jaykumar Padalunkal, Praneet Singh  
-**Note:** FFmpeg is unmodified; this is a best-effort tool.
+**Note:** FFmpeg is unmodified; performance is best effort.
 
-## Quick Start (CLI)
+## Index
+- [Quick Start (CLI)](#quick-start-cli-)
+- [Python Usage](#python-usage-)
+- [Repository Layout](#repository-layout-)
+- [Community](#community-)
+- [Citation](#citation-)
+- [Tutorials](#tutorials-)
+
+## Quick Start (CLI) ⚡
 1. `git clone https://github.com/jishnujayakumar/MV-Tractus.git && cd MV-Tractus`
 2. Build or point to FFmpeg; ensure libs are discoverable (see `install_ffmpeg.sh`, `ffmpeg.conf`).
 3. `./compile` (outputs to `bin/`)
@@ -19,25 +27,26 @@ Fast native visualization (all vectors, no Python):
 ffmpeg -flags2 +export_mvs -debug vis_mv=pf+bf -i input.mp4 -c:v libx264 -crf 18 -preset fast output_with_mv.mp4
 ```
 
-## Python Usage (`mv-tractus`)
+## Python Usage 🐍
 Install:
 ```bash
-pip install mv-tractus
+conda create -n mv-tractus python=3.9
+python -m pip install -e ./mvtpy --upgrade
 ```
 
-- Motion vectors:
+Motion vectors:
   ```python
   from mv_tractus import MVTractus
   mvt = MVTractus("/path/to/video.mp4")
   mvt.get_motion_vectors()  # JSON -> ./output/mv
   ```
-- Motion vectors + frames:
+Motion vectors + frames:
   ```python
   from mv_tractus import MVTractusWithFrames
   mvt = MVTractusWithFrames("/path/to/video.mp4")
   mvt.get_motion_vectors_and_frames()  # JSON -> ./output/mv, frames -> ./output/frames
   ```
-- Overlay vectors on saved frames (Pillow):
+Overlay vectors on saved frames (Pillow):
   ```python
   from mv_tractus import overlay_motion_vectors
 
@@ -53,7 +62,7 @@ pip install mv-tractus
   ```
   For all vectors, use `stride=1` and `max_vectors_per_frame=None`.
 
-## Repository Layout
+## Repository Layout 📂
 - `src/c` – FFmpeg-based C sources (`extract_mvs.c`, `extract_mvs_with_frames.c`, helpers)
 - `src/cpp` – C++ OpenCV/FFmpeg experiments (`efmvs.cpp`, etc.)
 - `scripts` – Utility scripts
@@ -61,10 +70,10 @@ pip install mv-tractus
 - `include` – Vendored FFmpeg headers
 - `output` – Default location for extracted data
 
-## Community
+## Community 🤝
 Need help or want to contribute? Join the Slack: https://join.slack.com/t/mv-tractus/shared_invite/zt-lmjczfaf-TX_JYYkKIlBeySkwPcX3xg
 
-## Citation
+## Citation 📚
 If you use this tool, please cite:
 
 Jishnu P, & Singh, Praneet. (2018, October 21). MV-Tractus: A simple tool to extract motion vectors from H264 encoded video sources (Version 2.0). Zenodo.  
@@ -84,3 +93,12 @@ Jishnu P, & Singh, Praneet. (2018, October 21). MV-Tractus: A simple tool to ext
   url          = {https://doi.org/10.5281/zenodo.4422613}
 }
 ```
+
+## Tutorials 🎥
+Installation, setup, and usage (extract_mvs):  
+
+  [![extract_mvs](https://i.ytimg.com/vi/qpwTdxsBebk/hqdefault.jpg)](https://www.youtube.com/watch?v=qpwTdxsBebk)
+
+Usage (extract_mvs_with_frames):  
+
+  [![extract_mvs_with_frames](https://i.ytimg.com/vi/-e02hCdQ0_w/hqdefault.jpg)](https://www.youtube.com/watch?v=-e02hCdQ0_w)
