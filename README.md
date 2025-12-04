@@ -30,7 +30,8 @@ ffmpeg -flags2 +export_mvs -debug vis_mv=pf+bf -i input.mp4 -c:v libx264 -crf 18
 ## Python Usage 🐍
 Install:
 ```bash
-pip install mv-tractus
+conda create -n mv-tractus python=3.9
+python -m pip install -e ./mvtpy --upgrade
 ```
 
 - Motion vectors:
